@@ -125,6 +125,21 @@ def parse_task_id(raw: str) -> str:
 
 # ── API operations ────────────────────────────────────────────────────────────
 
+def get_task_comments(tid: str, token: str) -> list:
+    result = http("GET", f"/open-apis/task/v2/comments?resource_type=task&resource_id={tid}&page_size=100", token=token)
+    if result.get("code") != 0:
+        return []
+    items = result.get("data", {}).get("items", [])
+    return [
+        {
+            "id": c["id"],
+            "content": c.get("content", ""),
+            "created_at": time.strftime("%Y-%m-%d %H:%M", time.localtime(int(c["created_at"]) // 1000)) if c.get("created_at") else None,
+        }
+        for c in items
+    ]
+
+
 def get_task(task_id: str) -> dict:
     tid = parse_task_id(task_id)
     token = get_token()
@@ -141,6 +156,7 @@ def get_task(task_id: str) -> dict:
         "status": t.get("status", "todo"),  # "todo" = 未完成, "done" = 已完成
         "due": time.strftime("%Y-%m-%d %H:%M", time.localtime(int(due_ts))) if due_ts else None,
         "members": [{"id": m["id"], "role": m.get("role")} for m in t.get("members", [])],
+        "comments": get_task_comments(tid, token),
     }
 
 
