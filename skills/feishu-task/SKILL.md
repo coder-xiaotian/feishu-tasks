@@ -64,23 +64,21 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" get_task <task_
 2. 实现代码变更
 3. 运行相关测试（如有）
 
-### 第五步：添加任务评论
+实现完成后直接告知结果，**不主动**添加评论或关闭任务。如用户说"评论一下"、"在飞书备注一下"、"完成任务"、"关掉这个任务"等，再执行对应操作。
+
+## 按需操作
+
+### 添加评论
+
+当用户要求在飞书任务中留下评论/备注时：
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" add_comment <task_id> "[Claude Code] 已完成实现
-
-变更内容：
-- {简要描述改动}
-
-涉及文件：
-- {修改的文件路径}"
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" add_comment <task_id> "<评论内容>"
 ```
 
-### 第六步：询问是否关闭任务
+### 标记任务完成
 
-询问用户：「任务已实现完成，是否将飞书任务标记为已完成？」
-
-若用户确认：
+当用户要求关闭/完成飞书任务时：
 
 ```bash
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" complete_task <task_id>
