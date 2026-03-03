@@ -176,7 +176,7 @@ def complete_task(task_id: str) -> dict:
         "PATCH",
         f"/open-apis/task/v2/tasks/{tid}?user_id_type=user_id",
         token=token,
-        body={"task": {"completed_at": str(int(time.time()))}},
+        body={"task": {"completed_at": str(int(time.time() * 1000))}, "update_fields": "completed_at"},
     )
     if result.get("code") != 0:
         raise RuntimeError(f"完成任务失败（code={result.get('code')}）：{result.get('msg')}")

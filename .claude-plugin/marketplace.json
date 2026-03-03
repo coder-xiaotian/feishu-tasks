@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "feishu-tasks",
-      "version": "0.0.2",
+      "version": "0.0.3",
       "source": {
         "source": "github",
         "repo": "coder-xiaotian/feishu-tasks"
