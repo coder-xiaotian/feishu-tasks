@@ -6,8 +6,11 @@
   "plugins": [
     {
       "name": "feishu-tasks",
-      "version": "1.0.0",
-      "source": ".",
+      "version": "0.0.1",
+      "source": {
+        "source": "github",
+        "repo": "coder-xiaotian/feishu-tasks"
+      },
       "description": "Fetch Feishu (Lark) tasks and implement them in your codebase. Zero dependencies - uses Python 3 stdlib only."
     }
   ]
