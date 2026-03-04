@@ -26,12 +26,11 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" check_config
 
 1. 前往 https://open.feishu.cn/ → 开发者后台 → 创建自建应用
 2. 进入「权限管理」，申请以下权限：
-   - task:attachment:read
-   - task:comment:write
    - task:task:read
    - task:task:readonly
    - task:task:writeonly
-   - task:tasklist:write
+   - task:comment:write
+   - task:attachment:read
    - task:tasklist:write
 3. 发布应用版本（需企业管理员审批）
 4. 在「凭证与基础信息」页面获取 App ID 和 App Secret
@@ -94,9 +93,4 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" list_tasks
 **列出已完成任务：**
 ```bash
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" list_tasks --completed
-```
-
-**直接关闭任务：**
-```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" complete_task <task_id>
 ```
