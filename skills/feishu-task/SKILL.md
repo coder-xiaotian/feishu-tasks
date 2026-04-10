@@ -16,7 +16,7 @@ description: >
 ### 第一步：检查凭据配置
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" check_config
+PYTHONIOENCODING=utf-8 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" check_config
 ```
 
 **若返回 `configured: false`**，引导用户完成首次配置：
@@ -41,7 +41,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" check_config
 收到凭据后执行：
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" save_config <app_id> <app_secret>
+PYTHONIOENCODING=utf-8 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" save_config <app_id> <app_secret>
 ```
 
 ### 第二步：提取任务 ID
@@ -51,7 +51,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" save_config <ap
 ### 第三步：获取任务详情
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" get_task <task_id>
+PYTHONIOENCODING=utf-8 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" get_task <task_id>
 ```
 
 向用户展示：任务标题（summary）、描述（description）、截止日期（due）、状态（status）。
@@ -72,7 +72,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" get_task <task_
 当用户要求在飞书任务中留下评论/备注时：
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" add_comment <task_id> "<评论内容>"
+PYTHONIOENCODING=utf-8 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" add_comment <task_id> "<评论内容>"
 ```
 
 ### 标记任务完成
@@ -80,17 +80,17 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" add_comment <ta
 当用户要求关闭/完成飞书任务时：
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" complete_task <task_id>
+PYTHONIOENCODING=utf-8 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" complete_task <task_id>
 ```
 
 ## 其他触发场景
 
 **列出待办任务：**
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" list_tasks
+PYTHONIOENCODING=utf-8 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" list_tasks
 ```
 
 **列出已完成任务：**
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" list_tasks --completed
+PYTHONIOENCODING=utf-8 python3 "${CLAUDE_PLUGIN_ROOT}/skills/feishu-task/feishu_api.py" list_tasks --completed
 ```
