@@ -159,7 +159,7 @@ def get_task(task_id: str) -> dict:
         "summary": t["summary"],
         "description": t.get("description", ""),
         "status": t.get("status", "todo"),  # "todo" = 未完成, "done" = 已完成
-        "due": time.strftime("%Y-%m-%d %H:%M", time.localtime(int(due_ts))) if due_ts else None,
+        "due": time.strftime("%Y-%m-%d %H:%M", time.localtime(int(due_ts) // 1000)) if due_ts else None,
         "members": [{"id": m["id"], "role": m.get("role")} for m in t.get("members", [])],
         "comments": get_task_comments(tid, token),
     }
